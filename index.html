@@ -88,7 +88,7 @@
             required
           />
           <label class="form-check-label" for="Check"
-            >accept all terms and condition</label
+            >Accept Terms & Conditions</label
           >
           <br /><br />
           <button
@@ -116,10 +116,10 @@
         <thead>
           <tr>
             <th>Name</th>
-            <th>Dob</th>
             <th>Email</th>
             <th>Password</th>
-            <th>Accepted terms</th>
+            <th>Dob</th>
+            <th>Accepted terms?</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -142,18 +142,18 @@
 
     // Insert cells for the name, dob, email, and password
     let nameCell = row.insertCell(0);
-    let dobCell = row.insertCell(1);
-    let emailCell = row.insertCell(2);
-    let passwordCell = row.insertCell(3);
+    let emailCell = row.insertCell(1);
+    let passwordCell = row.insertCell(2);
+    let dobCell = row.insertCell(3);
     let t_and_cCell = row.insertCell(4);
 
     // Set the cell values
     nameCell.innerHTML = userData[i].name;
-    dobCell.innerHTML = userData[i].dob;
     emailCell.innerHTML = userData[i].email;
     passwordCell.innerHTML = userData[i].password;
-    t_and_cCell.innerHTML = userData[i].checkbox;
-    console.log("erroe")
+    dobCell.innerHTML = userData[i].dob;
+    t_and_cCell.innerHTML = userData[i].Accepted_terms;
+    console.log("error")
   }}
     // } else {
     //   console.error("No data found in local storage or data is not in expected format");
@@ -246,9 +246,9 @@
         }
 
         if (checkbox.checked) {
-          checkbox_status="accepted terms"
+          checkbox_status="true"
         } else {
-          checkbox_status="not accepted terms"
+          checkbox_status="false"
         }
 
         if (isValid) {
@@ -260,10 +260,10 @@
           // Add the new user data to the array
           data.push({
             name: name,
-            dob: dob,
             email: email,
             password: password,
-            checkbox:checkbox_status,
+            dob: dob,
+            Accepted_terms:checkbox_status,
             // Add any other relevant data here
           });
 
@@ -276,9 +276,9 @@
           const row = document.createElement("tr");
           row.innerHTML = `
           <td>${name}</td>
-          <td>${dob}</td>
           <td>${email}</td>
           <td>${password}</td>
+          <td>${dob}</td>
           <td>${checkbox_status}</td>
           `;
           table.appendChild(row);
